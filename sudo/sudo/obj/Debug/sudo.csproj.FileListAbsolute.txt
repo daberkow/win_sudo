@@ -1,0 +1,5 @@
+C:\Users\Dan\Project\win_sudo\sudo\sudo\bin\Debug\sudo.exe
+C:\Users\Dan\Project\win_sudo\sudo\sudo\bin\Debug\sudo.pdb
+C:\Users\Dan\Project\win_sudo\sudo\sudo\obj\Debug\sudo.csprojResolveAssemblyReference.cache
+C:\Users\Dan\Project\win_sudo\sudo\sudo\obj\Debug\sudo.exe
+C:\Users\Dan\Project\win_sudo\sudo\sudo\obj\Debug\sudo.pdb
