@@ -4,6 +4,6 @@
     <StartArguments>dir /p</StartArguments>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
-    <StartArguments>notepad c:\text.txt</StartArguments>
+    <StartArguments>/write</StartArguments>
   </PropertyGroup>
 </Project>
