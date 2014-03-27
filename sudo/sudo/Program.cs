@@ -28,68 +28,22 @@ namespace sudo
             {
                 if (args[0] == "/write")
                 {
-                    
                     var identity = WindowsIdentity.GetCurrent();
                     var principal = new WindowsPrincipal(identity);
 
                     if (principal.IsInRole(WindowsBuiltInRole.Administrator))
                     {
-                        //these could be function but in a rush
-                        //ls
-                        string cmd = "dir %1";
-                        string windir = System.Environment.GetEnvironmentVariable("windir");
-                        System.IO.FileInfo fileWrite = new System.IO.FileInfo(windir + "\\system32\\ls.cmd");
-                        if (fileWrite.Exists)
+                        bool ErrorHasOccured = false;
+                        ErrorHasOccured = writeLsCommand();
+
+                        if (ErrorHasOccured)
                         {
-                            Console.WriteLine("File ls.cmd exists, skipping");
-                        }
-                        else
-                        {
-                            bool errored = false;
-                            try
-                            {
-                                System.IO.StreamWriter writer = fileWrite.CreateText();
-                                writer.WriteLine(cmd);
-                                writer.Flush();
-                                writer.Close();
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine("Error writing ls");
-                                errored = true;
-                            }
-                            if (!errored)
-                            {
-                                Console.WriteLine("ls written");
-                            }
+                            ErrorHasOccured = writeIfconfig();
                         }
 
-                        //ifconfig
-                        cmd = "ipconfig %1";
-                        fileWrite = new System.IO.FileInfo(windir + "\\system32\\ifconfig.cmd");
-                        if (fileWrite.Exists)
+                        if (ErrorHasOccured)
                         {
-                            Console.WriteLine("File ifconfig.cmd exists, skipping");
-                        }
-                        else
-                        {
-                            bool errored = false;
-                            try
-                            {
-                                System.IO.StreamWriter writer = fileWrite.CreateText();
-                                writer.WriteLine(cmd);
-                                writer.Flush();
-                                writer.Close();
-                            }
-                            catch (Exception e)
-                            {
-                                Console.WriteLine("Error writing ifconfig");
-                                errored = true;
-                            }
-                            if (!errored)
-                            {
-                                Console.WriteLine("ifconfig written");
-                            }
+                            ErrorHasOccured = writesuperc();
                         }
                     }
                     else
@@ -99,12 +53,12 @@ namespace sudo
                 }else{
                     if(args[0] == "/?")
                     {
-                        System.Console.WriteLine("Win Sudo - Dan Berkowitz, https://github.com/daberkow/win_sudo");
+                        System.Console.WriteLine("Win Sudo - Dan Berkowitz, v2, https://github.com/daberkow/win_sudo");
                         System.Console.WriteLine("Run applications in Windows command prompt as administrator");
                         System.Console.WriteLine("");
                         System.Console.WriteLine("Usage: sudo [program] [/write]");
                         System.Console.WriteLine("");
-                        System.Console.WriteLine("/write option (requires admin) writes ls and ifconfig to cmd");
+                        System.Console.WriteLine("/write option (requires admin) writes ls, ifconfig, and superc to cmd");
                     }else{
                         try
                         {
@@ -128,6 +82,99 @@ namespace sudo
                         }
                     }
                 }
+            }
+        }
+
+        private static bool writeLsCommand()
+        {
+            //ls
+            string cmd = "dir %1";
+            string windir = System.Environment.GetEnvironmentVariable("windir");
+            System.IO.FileInfo fileWrite = new System.IO.FileInfo(windir + "\\system32\\ls.cmd");
+            if (fileWrite.Exists)
+            {
+                Console.WriteLine("File ls.cmd exists, skipping");
+                return true;
+            }
+            else
+            {
+                try
+                {
+                    System.IO.StreamWriter writer = fileWrite.CreateText();
+                    writer.WriteLine(cmd);
+                    writer.Flush();
+                    writer.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error writing ls");
+                    return false;
+                }
+                Console.WriteLine("ls written");
+                return true;
+            }
+        }
+
+        private static bool writeIfconfig()
+        {
+            //ifconfig
+            string cmd = "ipconfig %1";
+            string windir = System.Environment.GetEnvironmentVariable("windir");
+            System.IO.FileInfo fileWrite = new System.IO.FileInfo(windir + "\\system32\\ifconfig.cmd");
+            if (fileWrite.Exists)
+            {
+                Console.WriteLine("File ifconfig.cmd exists, skipping");
+                return true;
+            }
+            else
+            {
+                try
+                {
+                    System.IO.StreamWriter writer = fileWrite.CreateText();
+                    writer.WriteLine(cmd);
+                    writer.Flush();
+                    writer.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error writing ifconfig");
+                    return false;
+                }
+                Console.WriteLine("ifconfig written");
+                return true;
+            }
+        }
+
+        private static string superconscript()
+        {
+            return sudo.Properties.Resources.supercscript;
+        }
+
+        private static bool writesuperc()
+        {
+            string windir = System.Environment.GetEnvironmentVariable("windir");
+            System.IO.FileInfo fileWrite = new System.IO.FileInfo(windir + "\\system32\\superc.cmd");
+            if (fileWrite.Exists)
+            {
+                Console.WriteLine("File superc.cmd exists, skipping");
+                return true;
+            }
+            else
+            {
+                try
+                {
+                    System.IO.StreamWriter writer = fileWrite.CreateText();
+                    writer.WriteLine(superconscript());
+                    writer.Flush();
+                    writer.Close();
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine("Error writing superc");
+                    return false;
+                }
+                Console.WriteLine("superc written");
+                return true;
             }
         }
     }

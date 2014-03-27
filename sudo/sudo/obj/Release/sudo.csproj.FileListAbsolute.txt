@@ -3,3 +3,10 @@ C:\Users\Dan\Project\win_sudo\sudo\sudo\bin\Release\sudo.pdb
 C:\Users\Dan\Project\win_sudo\sudo\sudo\obj\Release\sudo.csprojResolveAssemblyReference.cache
 C:\Users\Dan\Project\win_sudo\sudo\sudo\obj\Release\sudo.exe
 C:\Users\Dan\Project\win_sudo\sudo\sudo\obj\Release\sudo.pdb
+C:\Users\dberkowitz\Projects\winsudo\sudo\sudo\obj\Release\sudo.exe
+C:\Users\dberkowitz\Projects\winsudo\sudo\sudo\obj\Release\sudo.pdb
+C:\Users\dberkowitz\Projects\winsudo\sudo\sudo\bin\Release\sudo.exe
+C:\Users\dberkowitz\Projects\winsudo\sudo\sudo\bin\Release\sudo.pdb
+C:\Users\dberkowitz\Projects\winsudo\sudo\sudo\obj\Release\sudo.csprojResolveAssemblyReference.cache
+C:\Users\dberkowitz\Projects\winsudo\sudo\sudo\obj\Release\sudo.Properties.Resources.resources
+C:\Users\dberkowitz\Projects\winsudo\sudo\sudo\obj\Release\sudo.csproj.GenerateResource.Cache
