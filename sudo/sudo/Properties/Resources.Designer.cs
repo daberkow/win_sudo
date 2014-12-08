@@ -84,7 +84,10 @@ namespace sudo.Properties {
         ///
         ///:enablesc
         ///netsh interface tcp set global autotuninglevel=experimental
-        ///GOTO ex [rest of string was truncated]&quot;;.
+        ///GOTO exit
+        ///
+        ///:disablesc
+        ///netsh in [rest of string was truncated]&quot;;.
         /// </summary>
         internal static string supercscript {
             get {
